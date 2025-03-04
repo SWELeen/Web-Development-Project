@@ -1,15 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Clothing Order</title>
     <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:wght@100;400&display=swap"
+        rel="stylesheet">
 </head>
+
 <body>
+    <header class="contact-header" id="contact-header">
+        <img src="stitchit.jpg" alt="Logo picture" width="95" height="52">
+        <div class="nav-container">
+            <nav>
+                <a href="#">HOME</a>
+                <a href="#">ABOUT US</a>
+                <a href="#">CUSTOMIZE</a>
+                <a href="#">CONTACT</a>
+                <i class="fa-solid fa-cart-shopping"></i>
+            </nav>
+        </div>
+    </header>
     <div class="container">
-        <h2>Custom Clothing Order Form</h2>
-        <form>
+        <h2 class="title">
+            <span class="color1">C</span>
+            <span class="color2">U</span>
+            <span class="color3">S</span>
+            <span class="color4">T</span>
+            <span class="color4">O</span>
+            <span class="color1">M</span>
+            <span class="space"></span>
+            <span class="color2">C</span>
+            <span class="color3">L</span>
+            <span class="color4">O</span>
+            <span class="color1">T</span>
+            <span class="color2">H</span>
+            <span class="color3">I</span>
+            <span class="color4">I</span>
+            <span class="color1">N</span>
+            <span class="space"></span>
+            <span class="color2">O</span>
+            <span class="color3">R</span>
+            <span class="color4">D</span>
+            <span class="color1">E</span>
+            <span class="color2">R</span>
+            <span class="space"></span>
+            <span class="color3">F</span>
+            <span class="color4">O</span>
+            <span class="color1">R</span>
+            <span class="color2">M</span>
+        </h2>
+
+        <form class="Form">
             <fieldset>
                 <legend>Personal Information</legend>
                 <label for="name">Full Name:</label>
@@ -86,7 +134,8 @@
             <fieldset>
                 <legend>Additional Details</legend>
                 <label for="description">Custom Description:</label>
-                <textarea id="description" name="description" rows="5" placeholder="Describe any specific requirements..."></textarea>
+                <textarea id="description" name="description" rows="5"
+                    placeholder="Describe any specific requirements..."></textarea>
 
                 <label for="file">Upload Reference Image:</label>
                 <input type="file" id="file" name="file">
@@ -95,5 +144,32 @@
             <button type="submit">Submit Order</button>
         </form>
     </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Help</h3>
+                <p>Customer Service</p>
+                <p>Contact</p>
+            </div>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <p>Instagram</p>
+                <p>X</p>
+                <p>Facebook</p>
+                <p>Tik Tok</p>
+            </div>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <p>Privacy Policy</p>
+                <p>Term of use</p>
+            </div>
+        </div>
+        <hr>
+        <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
+        <div class="back-to-top">
+            <a href="#contact-header">&UpArrow;</a>
+        </div>
+    </footer>
 </body>
+
 </html>
