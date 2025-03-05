@@ -17,7 +17,6 @@ body {
 }
 
 .nav-container {
-
     display: flex;
     gap: 50px;
 }
@@ -41,7 +40,6 @@ nav {
     text-decoration: underline;
 }
 
-
 .title {
     text-align: center;
     font-size: 32px;
@@ -59,7 +57,7 @@ nav {
 }
 
 .color3 {
-    color: #8DBBB8;
+    color: #8dbbb8;
 }
 
 .color4 {
@@ -71,82 +69,105 @@ nav {
     width: 10px;
 }
 
-/* Contact Form */
-.contact-form {
-    background-color: #ffffff;
-    padding: 40px 20px;
+/* Step Indicator */
+.step-indicator {
     display: flex;
-    margin-top: 10px;
-    flex-wrap: wrap;
     justify-content: center;
-    gap: 40px;
-    max-width: 500px;
-    margin: 40px auto;
-    box-shadow: 0 0 10px rgb(139, 138, 138);
-}
-
-
-.Form {
-    background-color: #ffffff;
-    padding: 40px 20px;
-    display: flex;
-    margin-top: 10px;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 40px;
-    max-width: 500px;
-    margin: 40px auto;
-    box-shadow: 0 0 10px rgb(139, 138, 138);
-
-}
-
-.Name {
-    display: flex;
-    gap: 10px;
-    width: 100%;
     align-items: center;
+    margin: 20px 0;
 }
 
-.Name input {
-    flex: 1;
-    min-width: 0;
+
+
+
+.step-circle {
+    width: 40px;
     height: 40px;
-    box-sizing: border-box;
+    line-height: 40px;
+    border-radius: 50%;
+    background-color: #ddd;
+    color: black;
+    font-weight: bold;
+    text-align: center;
 }
 
-/* Input & Textarea Styling */
-input,
-textarea,
-button {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
-    height: 45px;
-    box-sizing: border-box;
+.step-line {
+    width: 50px;
+    height: 5px;
+    background-color: #ddd;
 }
 
-textarea {
-    height: 100px;
-    resize: none;
-}
-
-/* Submit Button */
-button {
-    background: linear-gradient(to right, #EAAEB2, #8DBBB8);
+.step-circle.active {
+    background-color: #EAAEB2;
     color: white;
-    font-size: 18px;
+}
+.step-line {
+    width: 50px;  /* Adjust width */
+    height: 5px;  /* Adjust thickness */
+    background-color: #ddd; /* Default gray */
+    transition: background-color 0.3s ease-in-out;
+   
+}
+
+/* Change color when active */
+.step-circle.active + .step-line {
+    background-color: #EAAEB2; /* Green */
+}
+
+
+/* Form Steps */
+form {
+    width: 50%;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Fieldset Styling */
+fieldset {
     border: none;
-    border-radius: 28px;
-    margin-left: 2px;
-    font-family: "Montserrat", serif;
+    padding: 20px;
+    display: none;
+}
+
+.step.active {
+    display: block;
+}
+
+/* Labels & Inputs */
+label {
+    display: block;
+    font-weight: bold;
+    margin: 10px 0 5px;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+/* Buttons */
+button {
+    padding: 10px 20px;
+    background: #F0B35B;
+    color: white;
+    border: none;
     cursor: pointer;
+    border-radius: 4px;
+    margin: 5px;
 }
 
 button:hover {
-    opacity: 0.85;
+    background: #EAAEB2;
 }
+
 
 /* Footer */
 footer {
@@ -154,6 +175,9 @@ footer {
     color: white;
     font-size: 12px;
     padding: 20px 0;
+    position: absolute;
+
+    width: 100%;
     text-align: center;
 }
 
@@ -192,7 +216,6 @@ footer {
     align-items: center;
     border-radius: 50%;
     color: white;
-    /* Change color to white */
     font-size: 24px;
     text-decoration: none;
     transition: opacity 0.3s;
@@ -200,7 +223,6 @@ footer {
 
 .back-to-top a {
     color: white;
-    /* Ensure link inside is white */
     text-decoration: none;
 }
 
@@ -210,13 +232,8 @@ footer {
 
 /* Responsive Design */
 @media (max-width: 768px) {
-    .contact-form {
+    #multiStepForm {
         max-width: 90%;
         padding: 25px;
-    }
-
-    .Name {
-        flex-direction: column;
-        gap: 10px;
     }
 }
