@@ -15,18 +15,20 @@
 </head>
 
 <body>
-    <header class="contact-header" id="contact-header">
-        <img src="stitchit.jpg" alt="Logo picture" width="95" height="52">
-        <div class="nav-container">
-            <nav>
-                <a href="#">HOME</a>
-                <a href="#">ABOUT US</a>
-                <a href="#">CUSTOMIZE</a>
-                <a href="#">CONTACT</a>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </nav>
-        </div>
+    <header>
+        <nav>
+            <div class="logo">St<span class="yellow">i</span><span class="blue">t</span><span
+                    class="orange">ch</span><span class="yellow">i</span><span class="blue">t</span></div>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="about.html" class="active">ABOUT</a></li>
+                <li><a href="#">CUSTOMIZE</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li class="cart-icon"><i class="fas fa-shopping-cart"></i></li>
+            </ul>
+        </nav>
     </header>
+    <div id="top">
     <div class="container">
         <h2 class="title">
             <span class="color1">C</span>
@@ -171,32 +173,33 @@
             <button type="submit">Submit</button>
         </fieldset>
     </form>
-        <footer>
-            <div class="footer-container">
-                <div class="footer-section">
-                    <h3>Help</h3>
-                    <p>Customer Service</p>
-                    <p>Contact</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Social</h3>
-                    <p>Instagram</p>
-                    <p>X</p>
-                    <p>Facebook</p>
-                    <p>Tik Tok</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Legal</h3>
-                    <p>Privacy Policy</p>
-                    <p>Term of use</p>
-                </div>
+    <footer>
+        <div class="footer-container">
+            <div class="footer-section">
+                <h3>Help</h3>
+                <p>Customer Service</p>
+                <p>Contact</p>
             </div>
-            <hr>
-            <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
-            <div class="back-to-top">
-                <a href="#contact-header">&UpArrow;</a>
+            <div class="footer-section">
+                <h3>Social</h3>
+                <p>Instagram</p>
+                <p>X</p>
+                <p>Facebook</p>
+                <p>Tik Tok</p>
             </div>
-        </footer>
+            <div class="footer-section">
+                <h3>Legal</h3>
+                <p>Privacy Policy</p>
+                <p>Term of use</p>
+            </div>
+        </div>
+        
+        <hr>
+        <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
+        <div class="back-to-top">
+            <a href="#top"> <img src="../images/up-arrow.png" alt = "up Arrow" style = "width: 26px; height: 26px;"></a>
+        </div>
+    </footer>
         <script src="script.js"></script>
 
 </body>
