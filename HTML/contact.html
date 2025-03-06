@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="contactus.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -16,31 +16,25 @@
 
 <body>
 
-    <header class="contact-header" id="contact-header">
-        <img src="stitchit.jpg" alt="Logo picture" width="95" height="52">
-        <div class="nav-container">
-            <nav>
-                <a href="#">HOME</a>
-                <a href="#">ABOUT US</a>
-                <a href="#">CUSTOMIZE</a>
-                <a href="#">CONTACT</a>
-                <i class="fa-solid fa-cart-shopping"></i>
-            </nav>
-        </div>
+    <header>
+        <nav>
+            <div class="logo" >St<span class="yellow">i</span><span class="blue">t</span><span
+                    class="orange">ch</span><span class="yellow">i</span><span class="blue">t</span></div>
+            <ul>
+                <li><a href="home.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="main.html">CUSTOMIZE</a></li>
+                <li><a href="contact.html" class="active">CONTACT</a></li>
+                <li class="cart-icon"><i class="fas fa-shopping-cart"></i></li>
+            </ul>
+        </nav>
     </header>
+    <div id="top"> <hr> </div>
 
-    <h1 class="contact">
-        <span class="color1">C</span>
-        <span class="color2">O</span>
-        <span class="color3">N</span>
-        <span class="color4">T</span>
-        <span class="color4">A</span>
-        <span class="color1">C</span>
-        <span class="color2">T</span>
-        <span class="space"></span>
-        <span class="color3">U</span>
-        <span class="color2">S</span>
-    </h1>
+    <div class="contact" id="contact">
+        <span class="pink">C</span><span class="yellow">O</span><span class="blue">N</span><span class="orange">T</span><span class="orange">A</span><span class="pink">C</span><span class="yellow">T</span>
+        <span class="space"></span><span class="blue">U</span><span class="yellow">S</span>
+    </div>
 
     <div class="contact-form">
         <form class="info">
@@ -58,7 +52,7 @@
                 <textarea placeholder="Message"></textarea>
             </div>
             <div>
-                <button type="submit">Send Message</button>
+                <button type="submit" id="submit">Send Message</button>
             </div>
 
         </form>
@@ -84,10 +78,11 @@
                 <p>Term of use</p>
             </div>
         </div>
+        
         <hr>
         <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
         <div class="back-to-top">
-            <a href="#contact-header">&UpArrow;</a>
+            <a href="#top"> <img src="../images/up-arrow.png" alt = "up Arrow" style = "width: 26px; height: 26px;"></a>
         </div>
     </footer>
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Clothing Order</title>
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -21,8 +21,8 @@
                     class="orange">ch</span><span class="yellow">i</span><span class="blue">t</span></div>
             <ul>
                 <li><a href="home.html">HOME</a></li>
-                <li><a href="about.html" class="active">ABOUT</a></li>
-                <li><a href="#">CUSTOMIZE</a></li>
+                <li><a href="about.html" >ABOUT</a></li>
+                <li><a href="main.html" class="active">CUSTOMIZE</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <li class="cart-icon"><i class="fas fa-shopping-cart"></i></li>
             </ul>
@@ -76,59 +76,59 @@
         <fieldset class="step active">
             <legend>Personal Information</legend>
 
-            <label for="name">Full Name:</label>
-            <input type="text" id="name" name="name" required>
+            <label class="label" for="name">Full Name:</label>
+            <input class="input" type="text" id="name" name="name" required>
 
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
+            <label class="label" for="email">Email:</label>
+            <input class="input" type="email" id="email" name="email" required>
 
-            <label for="phone">Phone:</label>
-            <input type="tel" id="phone" name="phone" required>
+            <label class="label" for="phone">Phone:</label>
+            <input class="input"type="tel" id="phone" name="phone" required>
 
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob" required>
+            <label class="label" for="dob">Date of Birth:</label>
+            <input class="input" type="date" id="dob" name="dob" required>
 
-            <button type="button" onclick="nextStep()">Next</button>
+            <button class="button" type="button" onclick="nextStep()">Next</button>
         </fieldset>
 
         <!-- Step 2: Body Measurements -->
         <fieldset class="step">
             <legend>Body Measurements (cm)</legend>
 
-            <label for="height">Height:</label>
-            <input type="number" id="height" name="height" required>
+            <label class="label" for="height">Height:</label>
+            <input class="input" type="number" id="height" name="height" required>
 
-            <label for="weight">Weight (kg):</label>
-            <input type="number" id="weight" name="weight" required>
+            <label class="label" for="weight">Weight (kg):</label>
+            <input class="input" type="number" id="weight" name="weight" required>
 
-            <label for="chest">Chest:</label>
-            <input type="number" id="chest" name="chest">
+            <label class="label" for="chest">Chest:</label>
+            <input class="input" type="number" id="chest" name="chest">
 
-            <label for="waist">Waist:</label>
-            <input type="number" id="waist" name="waist">
+            <label class="label" for="waist">Waist:</label>
+            <input class="input" type="number" id="waist" name="waist">
 
-            <label for="hips">Hips:</label>
-            <input type="number" id="hips" name="hips">
+            <label class="label"for="hips">Hips:</label>
+            <input class="input" type="number" id="hips" name="hips">
 
-            <label for="arm">Arm Length:</label>
-            <input type="number" id="arm" name="arm">
+            <label class="label" for="arm">Arm Length:</label>
+            <input class="input" type="number" id="arm" name="arm">
 
-            <label for="leg">Leg Length:</label>
-            <input type="number" id="leg" name="leg">
+            <label class="label" for="leg">Leg Length:</label>
+            <input class="input" type="number" id="leg" name="leg">
 
-            <label for="shoulder">Shoulder Width:</label>
-            <input type="number" id="shoulder" name="shoulder">
+            <label class="label" for="shoulder">Shoulder Width:</label>
+            <input class="input" type="number" id="shoulder" name="shoulder">
 
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="button" onclick="nextStep()">Next</button>
+            <button class="button" type="button" onclick="prevStep()">Previous</button>
+            <button class="button" type="button" onclick="nextStep()">Next</button>
         </fieldset>
 
         <!-- Step 3: Clothing Preferences -->
         <fieldset class="step">
             <legend>Clothing Preferences</legend>
 
-            <label for="clothing-type">Clothing Type:</label>
-            <select id="clothing-type" name="clothing-type">
+            <label class="label" for="clothing-type">Clothing Type:</label>
+            <select class="select" id="clothing-type" name="clothing-type">
                 <option value="dress">Dress</option>
                 <option value="pants">Pants</option>
                 <option value="shirt">Shirt</option>
@@ -136,41 +136,41 @@
                 <option value="jacket">Jacket</option>
             </select>
 
-            <label for="fabric">Fabric Choice:</label>
-            <select id="fabric" name="fabric">
+            <label class="label" for="fabric">Fabric Choice:</label>
+            <select class="select"  id="fabric" name="fabric">
                 <option value="cotton">Cotton</option>
                 <option value="silk">Silk</option>
                 <option value="linen">Linen</option>
                 <option value="wool">Wool</option>
             </select>
 
-            <label for="color">Preferred Color:</label>
-            <input type="color" id="color" name="color">
+            <label class="label" for="color">Preferred Color:</label>
+            <input class="input" type="color" id="color" name="color">
 
-            <label for="design">Design Style:</label>
-            <select id="design" name="design">
+            <label class="label" for="design">Design Style:</label>
+            <select class="select"  id="design" name="design">
                 <option value="classic">Classic</option>
                 <option value="modern">Modern</option>
                 <option value="casual">Casual</option>
                 <option value="formal">Formal</option>
             </select>
 
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="button" onclick="nextStep()">Next</button>
+            <button class="button" type="button" onclick="prevStep()">Previous</button>
+            <button class="button" type="button" onclick="nextStep()">Next</button>
         </fieldset>
 
         <!-- Step 4: Additional Details -->
         <fieldset class="step">
             <legend>Additional Details</legend>
 
-            <label for="description">Custom Description:</label>
-            <textarea id="description" name="description" rows="5" placeholder="Describe any specific requirements..."></textarea>
+            <label class="label" for="description">Custom Description:</label>
+            <textarea class ="textarea" id="description" name="description" rows="5" placeholder="Describe any specific requirements..."></textarea>
 
-            <label for="file">Upload Reference Image:</label>
-            <input type="file" id="file" name="file">
+            <label class="label" for="file">Upload Reference Image:</label>
+            <input class="input" type="file" id="file" name="file">
 
-            <button type="button" onclick="prevStep()">Previous</button>
-            <button type="submit">Submit</button>
+            <button class="button" type="button" onclick="prevStep()">Previous</button>
+            <button class="button" type="submit">Submit</button>
         </fieldset>
     </form>
     <footer>
@@ -200,7 +200,7 @@
             <a href="#top"> <img src="../images/up-arrow.png" alt = "up Arrow" style = "width: 26px; height: 26px;"></a>
         </div>
     </footer>
-        <script src="script.js"></script>
+        <script src="../JS/script.js"></script>
 
 </body>
 
