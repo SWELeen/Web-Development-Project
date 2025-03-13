@@ -23,11 +23,24 @@ function showStep(step) {
 }
 
 function nextStep() {
-    if (currentStep < steps.length - 1) {
+    const currentFieldset = steps[currentStep];
+    const inputs = currentFieldset.querySelectorAll("input, select, textarea");
+
+    let isValid = true;
+
+    inputs.forEach(input => {
+        if (!input.checkValidity()) {
+            isValid = false;
+            input.reportValidity();  
+        }
+    });
+
+    if (isValid && currentStep < steps.length - 1) {
         currentStep++;
         showStep(currentStep);
     }
 }
+
 
 function prevStep() {
     if (currentStep > 0) {
