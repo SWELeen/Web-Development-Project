@@ -550,6 +550,7 @@ textarea.textarea {
 
 /* ========== Media Queries ========== */
 
+
 /* شاشات الجوال الصغيرة (≤ 576px) */
 @media (max-width: 576px) {
 
@@ -678,5 +679,3 @@ textarea.textarea {
         max-width: 90%;
     }
 }
-
-
