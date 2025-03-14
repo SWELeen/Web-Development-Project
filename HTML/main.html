@@ -21,7 +21,7 @@
                     class="orange">ch</span><span class="yellow">i</span><span class="blue">t</span></div>
             <ul>
                 <li><a href="home.html">HOME</a></li>
-                <li><a href="about.html" >ABOUT</a></li>
+                <li><a href="about.html">ABOUT</a></li>
                 <li><a href="main.html" class="active">CUSTOMIZE</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <li class="cart-icon"><i class="fas fa-shopping-cart"></i></li>
@@ -29,178 +29,187 @@
         </nav>
     </header>
     <div id="top">
-    <div class="container">
-        <h2 class="title">
-            <span class="color1">C</span>
-            <span class="color2">U</span>
-            <span class="color3">S</span>
-            <span class="color4">T</span>
-            <span class="color4">O</span>
-            <span class="color1">M</span>
-            <span class="space"></span>
-            <span class="color2">C</span>
-            <span class="color3">L</span>
-            <span class="color4">O</span>
-            <span class="color1">T</span>
-            <span class="color2">H</span>
-            <span class="color3">I</span>
-            <span class="color4">I</span>
-            <span class="color1">N</span>
-            <span class="space"></span>
-            <span class="color2">O</span>
-            <span class="color3">R</span>
-            <span class="color4">D</span>
-            <span class="color1">E</span>
-            <span class="color2">R</span>
-            <span class="space"></span>
-            <span class="color3">F</span>
-            <span class="color4">O</span>
-            <span class="color1">R</span>
-            <span class="color2">M</span>
-        </h2>
+        <div class="container">
+            <h2 class="title">
+                <span class="color1">C</span>
+                <span class="color2">U</span>
+                <span class="color3">S</span>
+                <span class="color4">T</span>
+                <span class="color4">O</span>
+                <span class="color1">M</span>
+                <span class="space"></span>
+                <span class="color2">C</span>
+                <span class="color3">L</span>
+                <span class="color4">O</span>
+                <span class="color1">T</span>
+                <span class="color2">H</span>
+                <span class="color3">I</span>
+                <span class="color4">I</span>
+                <span class="color1">N</span>
+                <span class="space"></span>
+                <span class="color2">O</span>
+                <span class="color3">R</span>
+                <span class="color4">D</span>
+                <span class="color1">E</span>
+                <span class="color2">R</span>
+                <span class="space"></span>
+                <span class="color3">F</span>
+                <span class="color4">O</span>
+                <span class="color1">R</span>
+                <span class="color2">M</span>
+            </h2>
 
-        <div class="step-indicator">
-            <span class="step-circle active">1</span>
-            <span class="step-line"></span>
-            <span class="step-circle">2</span>
-            <span class="step-line"></span>
-            <span class="step-circle">3</span>
-            <span class="step-line"></span>
-            <span class="step-circle">4</span>
-        </div>
-
-         <!-- Multi-Step Form -->
-    <form id="multiStepForm">
-
-        <!-- Step 1: Personal Information -->
-        <fieldset class="step active">
-            <legend>Personal Information</legend>
-
-            <label class="label" for="name">Full Name:</label>
-            <input class="input" type="text" id="name" name="name" required>
-
-            <label class="label" for="email">Email:</label>
-            <input class="input" type="email" id="email" name="email" required>
-
-            <label class="label" for="phone">Phone:</label>
-            <input class="input"type="tel" id="phone" name="phone" required>
-
-            <label class="label" for="dob">Date of Birth:</label>
-            <input class="input" type="date" id="dob" name="dob" required>
-
-            <button class="button" type="button" onclick="nextStep()">Next</button>
-        </fieldset>
-
-        <!-- Step 2: Body Measurements -->
-        <fieldset class="step">
-            <legend>Body Measurements (cm)</legend>
-
-            <label class="label" for="height">Height:</label>
-            <input class="input" type="number" id="height" name="height" required>
-
-            <label class="label" for="weight">Weight (kg):</label>
-            <input class="input" type="number" id="weight" name="weight" required>
-
-            <label class="label" for="chest">Chest:</label>
-            <input class="input" type="number" id="chest" name="chest">
-
-            <label class="label" for="waist">Waist:</label>
-            <input class="input" type="number" id="waist" name="waist">
-
-            <label class="label"for="hips">Hips:</label>
-            <input class="input" type="number" id="hips" name="hips">
-
-            <label class="label" for="arm">Arm Length:</label>
-            <input class="input" type="number" id="arm" name="arm">
-
-            <label class="label" for="leg">Leg Length:</label>
-            <input class="input" type="number" id="leg" name="leg">
-
-            <label class="label" for="shoulder">Shoulder Width:</label>
-            <input class="input" type="number" id="shoulder" name="shoulder">
-
-            <button class="button" type="button" onclick="prevStep()">Previous</button>
-            <button class="button" type="button" onclick="nextStep()">Next</button>
-        </fieldset>
-
-        <!-- Step 3: Clothing Preferences -->
-        <fieldset class="step">
-            <legend>Clothing Preferences</legend>
-
-            <label class="label" for="clothing-type">Clothing Type:</label>
-            <select class="select" id="clothing-type" name="clothing-type">
-                <option value="dress">Dress</option>
-                <option value="pants">Pants</option>
-                <option value="shirt">Shirt</option>
-                <option value="suit">Suit</option>
-                <option value="jacket">Jacket</option>
-            </select>
-
-            <label class="label" for="fabric">Fabric Choice:</label>
-            <select class="select"  id="fabric" name="fabric">
-                <option value="cotton">Cotton</option>
-                <option value="silk">Silk</option>
-                <option value="linen">Linen</option>
-                <option value="wool">Wool</option>
-            </select>
-
-            <label class="label" for="color">Preferred Color:</label>
-            <input class="input" type="color" id="color" name="color">
-
-            <label class="label" for="design">Design Style:</label>
-            <select class="select"  id="design" name="design">
-                <option value="classic">Classic</option>
-                <option value="modern">Modern</option>
-                <option value="casual">Casual</option>
-                <option value="formal">Formal</option>
-            </select>
-
-            <button class="button" type="button" onclick="prevStep()">Previous</button>
-            <button class="button" type="button" onclick="nextStep()">Next</button>
-        </fieldset>
-
-        <!-- Step 4: Additional Details -->
-        <fieldset class="step">
-            <legend>Additional Details</legend>
-
-            <label class="label" for="description">Custom Description:</label>
-            <textarea class ="textarea" id="description" name="description" rows="5" placeholder="Describe any specific requirements..."></textarea>
-
-            <label class="label" for="file">Upload Reference Image:</label>
-            <input class="input" type="file" id="file" name="file">
-
-            <button class="button" type="button" onclick="prevStep()">Previous</button>
-            <button class="button" type="submit">Submit</button>
-        </fieldset>
-    </form>
-    <footer>
-        <div class="footer-container">
-            <div class="footer-section">
-                <h3>Help</h3>
-                <p>Customer Service</p>
-                <p>Contact</p>
+            <div class="step-indicator">
+                <span class="step-circle active">1</span>
+                <span class="step-line"></span>
+                <span class="step-circle">2</span>
+                <span class="step-line"></span>
+                <span class="step-circle">3</span>
+                <span class="step-line"></span>
+                <span class="step-circle">4</span>
             </div>
-            <div class="footer-section">
-                <h3>Social</h3>
-                <p>Instagram</p>
-                <p>X</p>
-                <p>Facebook</p>
-                <p>Tik Tok</p>
-            </div>
-            <div class="footer-section">
-                <h3>Legal</h3>
-                <p>Privacy Policy</p>
-                <p>Term of use</p>
-            </div>
-        </div>
-        
-        <hr>
-        <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
-        <div class="back-to-top">
-            <a href="#top"> <img src="../images/up-arrow.png" alt = "up Arrow" style = "width: 26px; height: 26px;"></a>
-        </div>
-    </footer>
-        <script src="../JS/script.js"></script>
+
+            <!-- Multi-Step Form -->
+            <form id="multiStepForm">
+
+                <!-- Step 1: Personal Information -->
+                <fieldset class="step active">
+                    <legend>Personal Information</legend>
+
+                    <label class="label" for="name">Full Name: <span class="required-star">*</span></label>
+                    <input class="input" type="text" id="name" name="name" required>
+
+                    <label class="label" for="email">Email: <span class="required-star">*</span></label>
+                    <input class="input" type="email" id="email" name="email" required>
+
+                    <label class="label" for="phone">Phone: <span class="required-star">*</span></label>
+                    <input class="input" type="tel" id="phone" name="phone" required>
+
+                    <label class="label" for="dob">Date of Birth: <span class="required-star">*</span></label>
+                    <input class="input" type="date" id="dob" name="dob" required>
+
+                    <button class="button" type="button" onclick="nextStep()">Next</button>
+                </fieldset>
+
+                <!-- Step 2: Body Measurements -->
+                <fieldset class="step">
+                    <legend>Body Measurements (cm)</legend>
+
+                    <label class="label" for="height">Height: <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="height" name="height" required>
+
+                    <label class="label" for="weight">Weight (kg): <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="weight" name="weight" required>
+
+                    <label class="label" for="chest">Chest: <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="chest" name="chest" required>
+
+                    <label class="label" for="waist">Waist: <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="waist" name="waist" required>
+
+                    <label class="label" for="hips">Hips: <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="hips" name="hips" required>
+
+                    <label class="label" for="arm">Arm Length:</label>
+                    <input class="input" type="number" id="arm" name="arm" required>
+
+                    <label class="label" for="leg">Leg Length: <span class="required-star">*</span></label>
+                    <input class="input" type="number" id="leg" name="leg" required>
+
+                    <label class="label" for="shoulder">Shoulder Width: <span class="required-star">*</span></label required>
+                    <input class="input" type="number" id="shoulder" name="shoulder" required>
+
+                    <button class="button" type="button" onclick="prevStep()">Previous</button>
+                    <button class="button" type="button" onclick="nextStep()">Next</button>
+                </fieldset>
+
+                <!-- Step 3: Clothing Preferences -->
+                <fieldset class="step">
+                    <legend>Clothing Preferences</legend>
+
+                    <label class="label" for="clothing-type">Clothing Type: <span class="required-star">*</span></label>
+                    <select class="select" id="clothing-type" name="clothing-type" required>
+                        <option value="" disabled selected>Select a clothing type</option>
+                        <option value="dress">Dress</option>
+                        <option value="pants">Pants</option>
+                        <option value="shirt">Shirt</option>
+                        <option value="suit">Suit</option>
+                        <option value="jacket">Jacket</option>
+                    </select>
+
+                    <label class="label" for="fabric">Fabric Choice: <span class="required-star">*</span></label>
+                    <select class="select" id="fabric" name="fabric" required>
+                        <option value="" disabled selected>Select a Fabric Choice</option>
+                        <option value="cotton">Cotton</option>
+                        <option value="silk">Silk</option>
+                        <option value="linen">Linen</option>
+                        <option value="wool">Wool</option>
+                    </select>
+
+                    <label class="label" for="color">Preferred Color: </label>
+                    <input class="input" type="color" id="color" name="color" required>
+                    <p id="color-error" class="error-message">Please select a color.</p>
+
+
+                    <label class="label" for="design">Design Style: <span class="required-star">*</span></label>
+                    <select class="select" id="design" name="design" required>
+                        <option value="" disabled selected>Select a Design Style</option>
+                        <option value="classic">Classic</option>
+                        <option value="modern">Modern</option>
+                        <option value="casual">Casual</option>
+                        <option value="formal">Formal</option>
+                    </select>
+
+                    <button class="button" type="button" onclick="prevStep()">Previous</button>
+                    <button class="button" type="button" onclick="nextStep()">Next</button>
+                </fieldset>
+
+                <!-- Step 4: Additional Details -->
+                <fieldset class="step">
+                    <legend>Additional Details</legend>
+
+                    <label class="label" for="description">Custom Description: <span class="required-star">*</span></label>
+                    <textarea class="textarea" id="description" name="description" rows="5" required></textarea>
+                    <p id="description-error" class="error-message"></p>
+
+
+                    <label class="label" for="file">Upload Reference Image: <span class="required-star">*</span></label>
+                    <input class="input" type="file" id="file" name="file" required>
+                    <p id="file-error" class="error-message"></p>
+
+                    <button class="button" type="button" onclick="prevStep()">Previous</button>
+                    <button class="button" type="submit">Submit</button>
+                </fieldset>
+            </form>
+            <footer>
+                <div class="footer-container">
+                    <div class="footer-section">
+                        <h3>Help</h3>
+                        <p>Customer Service</p>
+                        <p>Contact</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Social</h3>
+                        <p>Instagram</p>
+                        <p>X</p>
+                        <p>Facebook</p>
+                        <p>Tik Tok</p>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Legal</h3>
+                        <p>Privacy Policy</p>
+                        <p>Term of use</p>
+                    </div>
+                </div>
+
+                <hr>
+                <p class="copyright">Copyright &copy; 2025 StitchIt All Rights Reserved</p>
+                <div class="back-to-top">
+                    <a href="#top"> <img src="../images/up-arrow.png" alt="up Arrow"
+                            style="width: 26px; height: 26px;"></a>
+                </div>
+            </footer>
+            <script src="../JS/script.js"></script>
 
 </body>
 
