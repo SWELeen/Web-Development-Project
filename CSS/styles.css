@@ -426,23 +426,6 @@ td a:hover {
 
 }
 
-/* Colored Letters */
-.color1 {
-    color: #EAAEB2;
-}
-
-.color2 {
-    color: #F0B35B;
-}
-
-.color3 {
-    color: #8dbbb8;
-}
-
-.color4 {
-    color: #E17349;
-}
-
 /* Step Indicator */
 .step-indicator {
     display: flex;
