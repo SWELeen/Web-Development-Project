@@ -544,8 +544,10 @@ textarea.textarea {
 
 /* ========== Media Queries ========== */
 
-/* شاشات الجوال الصغيرة (≤ 576px) */
-@media (max-width: 576px) {
+
+/* for phone screens */
+/* يبغاله تعديل form الي في customize مو مزبوط مره  */
+@media (max-width: 440px) {
 
     .footer-container {
         flex-direction: column;
@@ -579,15 +581,17 @@ textarea.textarea {
     }
 
     .pattern {
-        margin-top: 20px;
+        margin-bottom: 20px;
         background: url('../images/geo.png');
         position: relative;
         width: 100%;
         height: 20vh;
+        order: -1;
     }
 
     header {
         padding: 15px 10%;
+        /* flex-direction: column; */
     }
 
     nav {
@@ -599,6 +603,97 @@ textarea.textarea {
         gap: 10px;
         margin-left: 0;
         text-align: center;
+        
+    }
+
+    nav ul li a {
+        font-size: 14px;
+    }
+
+    .content h1 {
+        font-size: 30px;
+        letter-spacing: 1px;
+    }
+
+    .content p {
+        font-size: 14px;
+    }
+
+    .social-icons {
+        font-size: 21px;
+        gap: 15px;
+        justify-content: left;
+    }
+}
+
+/* شاشات الجوال الصغيرة (≤ 576px) */
+@media  (min-width: 440px) and (max-width: 576px) {
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+    }
+
+    .mission span {
+        font-size: 25px;
+        font-weight: bold;
+    }
+
+    .mission p {
+        font-size: 15px;
+    }
+
+    .hero {
+        flex-direction: column;
+        text-align: left;
+        height: auto;
+        margin-top: 8px;
+        padding: 70px 1%;
+    }
+
+    .content {
+        width: 90%;
+        /* margin-top: 30px; */
+        padding: 0;
+        margin-left: 0;
+        
+    }
+
+    .pattern {
+        /* margin-top: 10px; */
+        background: url('../images/geo.png');
+        position: relative;
+        width: 100%;
+        height: 20vh;
+        order: -1;
+        padding: 0;
+        margin: 0;
+    }
+
+    header {
+        padding: 15px 10%;
+        /* padding: 0; */
+        margin: 0;
+        /* flex-direction: row; */
+    }
+
+    nav {
+        flex-direction: column;
+        align-items: center;
+        flex-direction: row;
+        /* text-align: center; */
+    }
+
+    nav ul {
+        gap: 10px;
+        margin-left: 0;
+        text-align: center;
+        align-items: center;
     }
 
     nav ul li a {
@@ -625,7 +720,9 @@ textarea.textarea {
 @media (min-width: 576px) and (max-width: 992px) {
 
     .content {
-        width: 50%;
+        width: 55%;
+        margin-top: 90px;
+        
     }
 
     nav ul {
