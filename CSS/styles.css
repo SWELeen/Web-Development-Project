@@ -35,7 +35,8 @@ nav {
 nav ul {
     list-style: none;
     display: flex;
-    margin-left: 800px;
+    /* margin-left: 800px; */
+    margin-left: auto;
     justify-content: space-between;
     gap: 40px;
 }
@@ -56,10 +57,12 @@ nav ul li a.active {
     font-weight: bold;
 }
 
+
 .logo {
     font-size: 24px;
     font-weight: 700;
     color: #EAAEB2;
+    margin-right: auto;
 }
 
 .pink {
@@ -91,14 +94,16 @@ nav ul li a.active {
 /* Hero Section */
 .hero {
     display: flex;
+  
     height: 100vh;
     align-items: center;
     justify-content: space-between;
-    padding: 100px 5%;
+    /* padding: 100px 5%; */
 }
 
 .content {
     width: 50%;
+    padding: 90px;
 }
 
 .content h1 {
@@ -154,14 +159,20 @@ nav ul li a.active {
 
 /* Pattern Design */
 .pattern {
+
     width: 40%;
     height: 90vh;
-    position: fixed;
-    background: url('../images/geo.png');
-    background-size: cover;
-    position: absolute;
+    position: relative;
+    
+    /* z-index: -1; */
     right: 0;
+    left: 0;
+    padding: 10px;
+    margin-right: 0px;
+    margin-top: auto;
     bottom: 0;
+    background: url('../images/geo.png') no-repeat center center;
+    background-size: cover; 
 }
 
 
@@ -172,6 +183,9 @@ nav ul li a.active {
     font-size: 24px;
     font-weight: bold;
     margin-top: 80px;
+    margin-bottom: 25px;
+    display: flex;
+    justify-content: center;
 }
 
 .contact-form {
@@ -180,6 +194,7 @@ nav ul li a.active {
     align-items: center;
     height: auto;
     margin-top: 20px;
+margin: auto;
 }
 
 .info {
@@ -531,4 +546,137 @@ textarea.textarea {
     border: 1px solid #ccc;
     border-radius: 4px;
 }
+
+
+/* ========== Media Queries ========== */
+
+/* شاشات الجوال الصغيرة (≤ 576px) */
+@media (max-width: 576px) {
+
+   
+    .features {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .feature-box {
+        width: 100%;
+    }
+
+    .footer-container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .back-to-top {
+        width: 40px;
+        height: 40px;
+    }
+
+
+
+    .hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        text-align: center;
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+
+    }
+
+    .pattern {
+        background: url('../images/geo.png') no-repeat center center;
+        width: 100vw; 
+        max-width: 100%; 
+        display: block; 
+        order: -1;
+        background-size: cover;
+        padding: 0;
+        margin: 0;
+
+    }
+
+    .content {
+        width: 90%;   
+        margin-top: 10px; 
+    }
+}
+
+/*  شاشات التابلت (576px - 768px) */
+@media (max-width: 768px) {
+
+    .hero {
+        
+        margin-top: 15px;
+    }
+
+    .content{
+        padding: 60px;
+    }
+    .pattern {
+       
+        width: 40%;
+        background-image: url('../images/geo.png'); 
+
+       
+        
+    }
+    
+    nav ul {
+        gap: 20px;
+    }
+
+    .content h1 {
+        font-size: 36px;
+        margin-top: 20px;
+    }
+
+    .contact-form {
+        flex-direction: column;
+    }
+
+    .info {
+        width: 90%;
+    }
+
+    .features {
+        gap: 30px;
+    }
+
+    .footer-container {
+        flex-direction: row;
+        align-items: center;
+    }
+}
+
+/*  شاشات اللابتوب (768px - 992px) */
+@media (max-width: 992px) {
+
+    .hero {
+       
+        margin-top: 15px;
+    }
+
+    .content{
+        padding: 40px;
+    }
+    .pattern {
+      
+        width: 40%;
+        background-image: url('../images/geo.png'); 
+       
+        
+    }
+
+    .contact-form {
+        width: 80%;
+    }
+
+    .footer-container {
+        max-width: 90%;
+    }
+}
+
 
