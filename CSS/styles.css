@@ -509,8 +509,11 @@ textarea.textarea {
 
 
 /* for phone screens */
-/* يبغاله تعديل form الي في customize مو مزبوط مره  */
 @media (max-width: 440px) {
+
+    #multiStepForm {
+        width: 80%;
+    }
 
     .logo {
         font-size: 20px;
@@ -594,6 +597,10 @@ textarea.textarea {
 
 /* شاشات الجوال الصغيرة (≤ 576px) */
 @media  (min-width: 440px) and (max-width: 576px) {
+
+    #multiStepForm {
+        width: 80%;
+    }
 
     .logo {
         font-size: 20px;
