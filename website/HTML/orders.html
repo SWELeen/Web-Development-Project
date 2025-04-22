@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <link rel="stylesheet" href="../CSS/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&amp;family=Poppins:wght@100;400&amp;display=swap"
+        rel="stylesheet">
+    <title>Orders</title>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo">St<span class="yellow">i</span><span class="blue">t</span><span
+                    class="orange">ch</span><span class="yellow">i</span><span class="blue">t</span></div>
+            <ul>
+                <li><a href="index.html">HOME</a></li>
+                <li><a href="about.html">ABOUT</a></li>
+                <li><a href="main.html">CUSTOMIZE</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+                <li class="cart-icon-active"><i class="fas fa-shopping-cart"></i></li>
+            </ul>
+        </nav>
+    </header>
+    <div id="top">
+        <hr>
+    </div>
+
+    <div>
+        <h2 class="title">
+            <span class="pink">O</span><span class="yellow">R</span><span class="blue">D</span><span
+                class="orange">E</span><span class="blue">R</span><span class="yellow">S</span>
+        </h2>
+    </div>
+
+    <section id="orders-container">
+        <div>
+            <table id="ordersTable" style="display: none;">
+                <tr>
+                    <th>Name</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Email</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Phone</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Clothing Type</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Fabric</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Color</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Design</th>
+                    <td></td>
+                </tr>
+                <tr>
+                    <th>Description</th>
+                    <td></td>
+                </tr>
+            </table>
+        </div>
+
+        <p id="no-orders" style="text-align: center; margin: 150px; color: #787878; font-size: 20px; display: block;">No orders yet</p>
+
+        <div class="order">
+            <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+        </div>
+    </section>
+
+    <script>
+        async function fetchLatestOrder() {
+            try {
+                const response = await fetch("http://localhost:3000/get-orders");
+                const orders = await response.json();
+
+                const noOrdersMsg = document.getElementById("no-orders");
+                const table = document.getElementById("ordersTable");
+                const checkoutBtn = document.getElementById("checkoutBtn");
+
+                if (!orders || orders.length === 0) {
+                    noOrdersMsg.style.display = "block";
+                    checkoutBtn.style.display = "none";
+                    table.style.display = "none"; 
+                    return;
+                }
+
+                // Get the latest order (the last one)
+                const latest = orders[orders.length - 1];
+
+                // Fill in the table <td> elements in order
+                const tableTds = document.querySelectorAll("table td");
+                tableTds[0].textContent = latest.name || '';
+                tableTds[1].textContent = latest.email || '';
+                tableTds[2].textContent = latest.phone || '';
+                tableTds[3].textContent = latest.clothing_type || '';
+                tableTds[4].textContent = latest.fabric || '';
+                tableTds[5].textContent = latest.color || '';
+                tableTds[6].textContent = latest.design || '';
+                tableTds[7].textContent = latest.description || '';
+                
+                table.style.display = "table";
+                noOrdersMsg.style.display = "none";
+                checkoutBtn.style.display = "block";
+
+            } catch (err) {
+                console.error("Error fetching order:", err);
+            }
+        }
+
+        fetchLatestOrder();
+    </script>
+
+</body>
+
+</html>

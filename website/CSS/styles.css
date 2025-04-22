@@ -6,7 +6,7 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-
+th
 body {
     background: #fefaf5;
     color: #444444;
@@ -88,6 +88,11 @@ nav ul li a.active {
     color: #444444;
 }
 
+.cart-icon-active {
+    font-size: 18px;
+    color: #8DBBB8;
+}
+
 .title {
     text-align: center;
     font-size: 25px;
@@ -144,6 +149,27 @@ nav ul li a.active {
     background: #8DBBB8;
     color: #fff;
     box-shadow: 0px 6px 15px rgba(141, 187, 184, 0.7);
+}
+
+.checkout-btn {
+    margin-top: 40px;
+    padding: 10px 100px;
+    border: none;
+    border-radius: 10px;
+    background: #fff;
+    color: #EAAEB2;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0px 4px 10px rgba(187, 135, 162, 0.5);
+    justify-self: center;
+    display: none;
+}
+
+.checkout-btn:hover {
+    background: #EAAEB2;
+    color: #fff;
+    box-shadow: 0px 6px 15px rgba(187, 135, 162, 0.5);
 }
 
 /* Social Icons */
@@ -330,7 +356,7 @@ hr {
 }
 
 
-.Team {
+.table {
     text-align: center;
     margin: 50px auto;
     max-width: 800px;
@@ -368,7 +394,8 @@ details[open] summary::after {
 }
 
 table {
-    width: 100%;
+    width: 70%;
+    justify-self: center;
     border-collapse: collapse;
     margin-top: 15px;
 }
