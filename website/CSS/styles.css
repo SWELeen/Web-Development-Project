@@ -163,7 +163,6 @@ nav ul li a.active {
     transition: 0.3s;
     box-shadow: 0px 4px 10px rgba(187, 135, 162, 0.5);
     justify-self: center;
-    display: none;
 }
 
 .checkout-btn:hover {

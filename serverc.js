@@ -45,6 +45,6 @@ app.post("/contact", (req, res) => {
 app.use(express.static('website'));
 
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(`🚀 Server is running on http://localhost:${PORT}/HTML/index.html`);
 });
 

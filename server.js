@@ -28,9 +28,9 @@ const upload = multer({ storage: storage });
 const db = mysql.createConnection({
     host: '127.0.0.1',
     user: 'root',
-    password: 'root', 
+    password: 'root',
     database: 'stitchit',
-    port: 8889 
+    port: 8889
 });
 
 db.connect((err) => {
@@ -49,12 +49,12 @@ app.post('/submit', upload.single('file'), (req, res) => {
     const image = req.file ? req.file.filename : null;
 
     const query = `
-        INSERT INTO orders (
-            name, email, phone, dob,
-            height, weight, chest, waist, hips, arm, leg, shoulder,
-            clothing_type, fabric, color, design, description, file_path
-        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-    `;
+    INSERT INTO orders (
+        name, email, phone, dob,
+        height, weight, chest, waist, hips, arm, leg, shoulder,
+        clothing_type, fabric, color, design, description, file_path
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+`;
 
     db.query(query, [
         name, email, phone, dob,
@@ -70,6 +70,24 @@ app.post('/submit', upload.single('file'), (req, res) => {
     });
 });
 
+// Route to get the latest order
+app.get('/latest-order', (req, res) => {
+    const query = `SELECT * FROM orders ORDER BY id DESC LIMIT 1`;
+
+    db.query(query, (err, results) => {
+        if (err) {
+            console.error('Error fetching latest order:', err);
+            return res.status(500).json({ error: 'Database error' });
+        }
+
+        if (results.length > 0) {
+            res.json(results[0]);
+        } else {
+            res.json(null);
+        }
+    });
+});
+
 app.listen(PORT, () => {
-    console.log(`🚀 Server is running on http://localhost:${PORT}`);
+    console.log(`🚀 Server is running on http://localhost:${PORT}/HTML/index.html`);
 });

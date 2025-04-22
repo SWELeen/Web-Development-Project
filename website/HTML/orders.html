@@ -78,54 +78,47 @@
             </table>
         </div>
 
-        <p id="no-orders" style="text-align: center; margin: 150px; color: #787878; font-size: 20px; display: block;">No orders yet</p>
+        <p id="no-orders" style="text-align: center; margin: 150px; color: #787878; font-size: 20px; display: block;">No
+            orders yet</p>
 
         <div class="order">
-            <button class="checkout-btn" id="checkoutBtn">Checkout</button>
+            <button class="checkout-btn" id="checkoutBtn" style="display: none;">Checkout</button>
         </div>
     </section>
 
     <script>
-        async function fetchLatestOrder() {
-            try {
-                const response = await fetch("http://localhost:3000/get-orders");
-                const orders = await response.json();
+        document.addEventListener("DOMContentLoaded", () => {
+            fetch('/latest-order')
+                .then(res => res.json())
+                .then(order => {
+                    console.log("🚀 Latest Order:", order);
+                    if (order) {
+                        document.getElementById("no-orders").style.display = "none";
+                        document.getElementById("ordersTable").style.display = "table";
+                        document.getElementById("checkoutBtn").style.display = "block"
 
-                const noOrdersMsg = document.getElementById("no-orders");
-                const table = document.getElementById("ordersTable");
-                const checkoutBtn = document.getElementById("checkoutBtn");
+                        const cells = document.querySelectorAll("#ordersTable td");
+                        cells[0].textContent = order.name;
+                        cells[1].textContent = order.email;
+                        cells[2].textContent = order.phone;
+                        cells[3].textContent = order.clothing_type;
+                        cells[4].textContent = order.fabric;
+                        cells[5].textContent = order.color;
+                        cells[6].textContent = order.design;
+                        cells[7].textContent = order.description;
 
-                if (!orders || orders.length === 0) {
-                    noOrdersMsg.style.display = "block";
-                    checkoutBtn.style.display = "none";
-                    table.style.display = "none"; 
-                    return;
-                }
-
-                // Get the latest order (the last one)
-                const latest = orders[orders.length - 1];
-
-                // Fill in the table <td> elements in order
-                const tableTds = document.querySelectorAll("table td");
-                tableTds[0].textContent = latest.name || '';
-                tableTds[1].textContent = latest.email || '';
-                tableTds[2].textContent = latest.phone || '';
-                tableTds[3].textContent = latest.clothing_type || '';
-                tableTds[4].textContent = latest.fabric || '';
-                tableTds[5].textContent = latest.color || '';
-                tableTds[6].textContent = latest.design || '';
-                tableTds[7].textContent = latest.description || '';
-                
-                table.style.display = "table";
-                noOrdersMsg.style.display = "none";
-                checkoutBtn.style.display = "block";
-
-            } catch (err) {
-                console.error("Error fetching order:", err);
-            }
-        }
-
-        fetchLatestOrder();
+                        document.querySelector(".order").style.display = "block";
+                    } else {
+                        // still no orders
+                        document.getElementById("ordersTable").style.display = "none";
+                        document.getElementById("no-orders").style.display = "block";
+                        document.getElementById("checkoutBtn").style.display = "none";
+                    }
+                })
+                .catch(err => {
+                    console.error("Error loading order:", err);
+                });
+        });
     </script>
 
 </body>
