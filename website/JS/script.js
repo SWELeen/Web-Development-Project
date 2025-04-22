@@ -1,4 +1,4 @@
-let currentStep = 0;
+let currentStep = 0; 
 const steps = document.querySelectorAll(".step");
 const stepCircles = document.querySelectorAll(".step-circle");
 const stepLines = document.querySelectorAll(".step-line");
@@ -67,4 +67,30 @@ document.querySelectorAll(".button-next").forEach(button => {
 
 document.querySelectorAll(".button-prev").forEach(button => {
     button.addEventListener("click", prevStep);
+});
+
+// ✅ إرسال البيانات إلى الخادم
+document.getElementById('multiStepForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const formData = new FormData(this);
+    formData.append('clothingType', document.getElementById('clothing-type').value);
+    formData.append('fabric', document.getElementById('fabric').value);
+    formData.append('color', document.getElementById('color').value);
+    formData.append('design', document.getElementById('design').value);
+
+    try {
+        const response = await fetch('http://localhost:3000/submit', {
+            method: 'POST',
+            body: formData,
+        });
+
+        const result = await response.text();
+        alert(result);
+        this.reset();
+        showStep(0);
+    } catch (error) {
+        console.error('Error:', error);
+        alert('Submission failed!');
+    }
 });

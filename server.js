@@ -1,114 +1,74 @@
 const express = require('express');
 const mysql = require('mysql2');
-const multer = require('multer');
 const cors = require('cors');
+const multer = require('multer');
+const path = require('path');
 const app = express();
-const port = 3000;
+const PORT = 3000;
 
+// Middleware
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use('/uploads', express.static('uploads'));
 
-// Static folder to serve uploaded images
-app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
-
-// Multer config for file upload
+// Multer setup for file upload
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/');
     },
     filename: function (req, file, cb) {
-        cb(null, Date.now() + '-' + file.originalname);
+        cb(null, Date.now() + path.extname(file.originalname));
     }
 });
 const upload = multer({ storage: storage });
 
 // MySQL connection
-const connection = mysql.createConnection({
-    host: 'localhost',
+const db = mysql.createConnection({
+    host: '127.0.0.1',
     user: 'root',
-    password: 'root',
-    database: 'stitchit'
+    password: 'root', 
+    database: 'stitchit',
+    port: 8889 
 });
 
-connection.connect((err) => {
-    if (err) {
-        console.error('MySQL connection error:', err);
-        return;
-    }
-    console.log('Connected to MySQL');
+db.connect((err) => {
+    if (err) throw err;
+    console.log('Connected to stitchit database');
 });
 
-// Handle form submission
-app.post('/submit-form', upload.single('file'), (req, res) => {
-    const data = req.body;
-    const filePath = req.file ? req.file.path : '';
-
-    const sql = `INSERT INTO orders (
+// Route to handle form submission
+app.post('/submit', upload.single('file'), (req, res) => {
+    const {
         name, email, phone, dob,
-        height, weight, chest, waist, hips,
-        arm, leg, shoulder,
-        clothing_type, fabric, color, design,
-        description, file_path) 
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`;
-    
-    const values = [
-        data.name,
-        data.email,
-        data.phone,
-        data.dob,
-        data.height,
-        data.weight,
-        data.chest,
-        data.waist,
-        data.hips,
-        data.arm,
-        data.leg,
-        data.shoulder,
-        data["clothing-type"],
-        data.fabric,
-        data.color,
-        data.design,
-        data.description,
-        filePath
-    ];
+        height, weight, chest, waist, hips, arm, leg, shoulder,
+        clothingType, fabric, color, design, description
+    } = req.body;
 
-//     const sql = `INSERT INTO orders (
-//         name, email, phone, dob,
-//         height, weight, chest, waist, hips,
-//         arm, leg, shoulder,
-//         clothing_type, fabric, color, design,
-//         description, file_path) 
-//         VALUES (
-//         '${data.name}',
-//         '${data.email}',
-//         '${data.phone}',
-//         '${data.dob}',
-//         ${data.height},
-//         ${data.weight},
-//         ${data.chest},
-//         ${data.waist},
-//         ${data.hips},
-//         ${data.arm},
-//         ${data.leg},
-//         ${data.shoulder},
-//         '${data["clothing-type"]}',
-//         '${data.fabric}',
-//         '${data.color}',
-//         '${data.design}',
-//         '${data.description}',
-//         '${filePath}')`;
+    const image = req.file ? req.file.filename : null;
 
-    connection.query(sql, (err, result) => {
+    const query = `
+        INSERT INTO orders (
+            name, email, phone, dob,
+            height, weight, chest, waist, hips, arm, leg, shoulder,
+            clothing_type, fabric, color, design, description, file_path
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
+
+    db.query(query, [
+        name, email, phone, dob,
+        height, weight, chest, waist, hips, arm, leg, shoulder,
+        clothingType, fabric, color, design, description, image
+    ], (err, result) => {
         if (err) {
-            console.error('Insert error:', err);
-            return res.status(500).send('Database error');
+            console.error(err);
+            res.status(500).send('Database error');
+        } else {
+            res.status(200).send('Order submitted successfully!');
         }
-        res.send('Form submitted successfully!');
     });
 });
 
-// Start server
-app.listen(port, () => {
-    console.log(`Server running on http://localhost:${port}`);
+app.listen(PORT, () => {
+    console.log(`Server running on http://localhost:${PORT}`);
 });
