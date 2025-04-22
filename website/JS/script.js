@@ -105,7 +105,7 @@ document.querySelectorAll(".button-prev").forEach(button => {
     button.addEventListener("click", prevStep);
 });
 
-// ✅ إرسال البيانات إلى الخادم
+//send data
 document.getElementById('multiStepForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
