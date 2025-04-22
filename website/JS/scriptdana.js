@@ -1,7 +1,49 @@
-let currentStep = 0; 
+let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 const stepCircles = document.querySelectorAll(".step-circle");
 const stepLines = document.querySelectorAll(".step-line");
+
+const express = require('express');
+const bodyParser = require('body-parser');
+const cors = require('cors');
+const mysql = require('mysql');
+
+
+const app = express();
+app.use(cors());
+app.use(bodyParser.json());
+
+
+const db = mysql.createConnection({
+    host: 'localhost',
+    user: 'root',
+    password: 'root',  
+    database: 'stitchit',
+    port: 8889        
+});
+
+db.connect(err => {
+    if (err) throw err;
+    console.log("Connected to database!");
+});
+
+
+app.post('/contact', (req, res) => {
+    const { firstName, lastName, email, phone, message } = req.body;
+    const sql = "INSERT INTO contacts (first_name, last_name, email, phone, message) VALUES (?, ?, ?, ?, ?)";
+    db.query(sql, [firstName, lastName, email, phone, message], (err, result) => {
+        if (err) {
+            console.error(err);
+            return res.status(500).send("Database error");
+        }
+        res.send("Message stored successfully");
+    });
+});
+
+app.listen(3000, () => {
+    console.log("Server is running on http://localhost:3000");
+});
+
 
 function showStep(step) {
     steps.forEach((s, index) => {
@@ -69,25 +111,33 @@ document.querySelectorAll(".button-prev").forEach(button => {
     button.addEventListener("click", prevStep);
 });
 
-// ✅ إرسال البيانات إلى الخادم
-document.getElementById('multiStepForm').addEventListener('submit', async function (e) {
+document.getElementById("contactForm").addEventListener("submit", async function (e) {
     e.preventDefault();
 
-    const formData = new FormData(this);
-    formData.append('clothingType', document.getElementById('clothing-type').value);
+    const data = {
+        firstName: document.getElementById("firstName").value,
+        lastName: document.getElementById("lastName").value,
+        email: document.getElementById("email").value,
+        phone: document.getElementById("phone").value,
+        message: document.getElementById("message").value
+    };
 
     try {
-        const response = await fetch('http://localhost:3000/submit', {
-            method: 'POST',
-            body: formData,
+        const res = await fetch("http://localhost:3000/contact", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(data)
         });
 
-        const result = await response.text();
-        alert(result);
-        this.reset();
-        showStep(0);
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Submission failed!');
+        if (res.ok) {
+            alert("Message sent successfully!");
+            document.getElementById("contactForm").reset();
+        } else {
+            alert("Something went wrong!");
+        }
+    } catch (err) {
+        console.error(err);
+        alert("Error connecting to server.");
     }
 });
+

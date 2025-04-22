@@ -39,25 +39,24 @@
     </div>
 
     <div class="contact-form">
-        <form class="info">
+        <form class="info" id="contactForm">
             <div class="Name">
-                <input type="text" placeholder="First Name" required>
-                <input type="text" placeholder="Last Name" required>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" required>
             </div>
             <div class="email">
-                <input type="email" placeholder="Email" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
             </div>
             <div class="phone">
-                <input type="tel" placeholder="Phone Number" required>
+                <input type="tel" id="phone" name="phone" placeholder="Phone Number" required>
             </div>
             <div>
-                <textarea placeholder="Message"></textarea>
+                <textarea id="message" name="message" placeholder="Message"></textarea>
             </div>
             <div>
                 <button type="submit" id="submit">Send Message</button>
             </div>
-
-        </form>
+        </form>               
     </div>
 
     <footer>
@@ -87,6 +86,7 @@
             <a href="#top"> <img src="../images/up-arrow.png" alt = "up Arrow" style = "width: 26px; height: 26px;"></a>
         </div>
     </footer>
+    <script src="../JS/script.js"></script>
 
 </body>
 
