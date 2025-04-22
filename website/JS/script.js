@@ -75,9 +75,9 @@ document.getElementById('multiStepForm').addEventListener('submit', async functi
 
     const formData = new FormData(this);
     formData.append('clothingType', document.getElementById('clothing-type').value);
-    formData.append('fabric', document.getElementById('fabric').value);
-    formData.append('color', document.getElementById('color').value);
-    formData.append('design', document.getElementById('design').value);
+    // formData.append('fabric', document.getElementById('fabric').value);
+    // formData.append('color', document.getElementById('color').value);
+    // formData.append('design', document.getElementById('design').value);
 
     try {
         const response = await fetch('http://localhost:3000/submit', {
