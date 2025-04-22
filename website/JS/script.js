@@ -3,6 +3,42 @@ const steps = document.querySelectorAll(".step");
 const stepCircles = document.querySelectorAll(".step-circle");
 const stepLines = document.querySelectorAll(".step-line");
 
+document.addEventListener("DOMContentLoaded", function () {
+    const form = document.getElementById("contactForm");
+
+    if (form) {
+        form.addEventListener("submit", function (e) {
+            e.preventDefault();
+
+            const data = {
+                firstName: document.getElementById("firstName").value,
+                lastName: document.getElementById("lastName").value,
+                email: document.getElementById("email").value,
+                phone: document.getElementById("phone").value,
+                message: document.getElementById("message").value
+            };
+
+            fetch("http://localhost:3000/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            })
+            .then(res => res.json())
+            .then(response => {
+                alert(response.message); 
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                alert("Something went wrong!");
+            });
+        });
+    } else {
+        console.error("Form not found!");
+    }
+});
+
 function showStep(step) {
     steps.forEach((s, index) => {
         s.classList.toggle("active", index === step);
