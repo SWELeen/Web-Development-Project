@@ -1,15 +1,14 @@
-let currentStep = 0; 
+let currentStep = 0;
 const steps = document.querySelectorAll(".step");
 const stepCircles = document.querySelectorAll(".step-circle");
 const stepLines = document.querySelectorAll(".step-line");
 
 document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("contactForm");
-
-    if (form) {
-        form.addEventListener("submit", function (e) {
+    // Contact form handler
+    const contactForm = document.getElementById("contactForm");
+    if (contactForm) {
+        contactForm.addEventListener("submit", function (e) {
             e.preventDefault();
-
             const data = {
                 firstName: document.getElementById("firstName").value,
                 lastName: document.getElementById("lastName").value,
@@ -27,16 +26,42 @@ document.addEventListener("DOMContentLoaded", function () {
             })
             .then(res => res.json())
             .then(response => {
-                alert(response.message); 
+                alert(response.message);
             })
             .catch(error => {
                 console.error("Error:", error);
                 alert("Something went wrong!");
             });
         });
-    } else {
-        console.error("Form not found!");
     }
+
+    // Multi-step form handler
+    const multiStepForm = document.getElementById('multiStepForm');
+    if (multiStepForm) {
+        multiStepForm.addEventListener('submit', async function (e) {
+            e.preventDefault();
+
+            const formData = new FormData(this);
+            formData.append('clothingType', document.getElementById('clothing-type').value);
+
+            try {
+                const response = await fetch('http://localhost:3000/submit', {
+                    method: 'POST',
+                    body: formData,
+                });
+
+                const result = await response.text();
+                alert(result);
+                this.reset();
+                showStep(0);
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Submission failed!');
+            }
+        });
+    }
+
+    showStep(currentStep);
 });
 
 function showStep(step) {
@@ -61,18 +86,40 @@ function nextStep() {
 
     inputs.forEach(input => {
         const errorElement = document.getElementById(`${input.id}-error`);
+        if (errorElement) {
+            errorElement.style.display = "none";
+            errorElement.innerText = "";
+        }
 
-        if (errorElement) errorElement.style.display = "none"; // Hide any previous errors
-
-        if (input.type === "file") {
-            if (input.files.length === 0) {
-                isValid = false;
-                if (errorElement) errorElement.style.display = "block";
+        if (input.type === "file" && input.files.length === 0) {
+            isValid = false;
+            if (errorElement) {
+                errorElement.style.display = "block";
+                errorElement.innerText = "Please upload a file.";
             }
-        } else if (input.tagName === "TEXTAREA") {
-            if (input.value.trim() === "") {
+        } else if ((input.tagName === "TEXTAREA" || input.type === "text") && (input.value.trim() === "" || input.value.length < 2 || input.value.length > 50)) {
+            isValid = false;
+            if (errorElement) {
+                errorElement.style.display = "block";
+                errorElement.innerText = "Text must be between 2 and 50 characters.";
+            }
+        } else if (input.type === "email") {
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailPattern.test(input.value)) {
                 isValid = false;
-                if (errorElement) errorElement.style.display = "block";
+                if (errorElement) {
+                    errorElement.style.display = "block";
+                    errorElement.innerText = "Invalid email format.";
+                }
+            }
+        } else if (input.id === "phone") {
+            const phonePattern = /^\d{8,15}$/;
+            if (!phonePattern.test(input.value)) {
+                isValid = false;
+                if (errorElement) {
+                    errorElement.style.display = "block";
+                    errorElement.innerText = "Phone number must contain 8 to 15 digits.";
+                }
             }
         } else if (!input.checkValidity()) {
             isValid = false;
@@ -93,37 +140,10 @@ function prevStep() {
     }
 }
 
-// Show the first step when the page loads
-showStep(currentStep);
-
-// Attach event listeners
 document.querySelectorAll(".button-next").forEach(button => {
     button.addEventListener("click", nextStep);
 });
 
 document.querySelectorAll(".button-prev").forEach(button => {
     button.addEventListener("click", prevStep);
-});
-
-//send data
-document.getElementById('multiStepForm').addEventListener('submit', async function (e) {
-    e.preventDefault();
-
-    const formData = new FormData(this);
-    formData.append('clothingType', document.getElementById('clothing-type').value);
-
-    try {
-        const response = await fetch('http://localhost:3000/submit', {
-            method: 'POST',
-            body: formData,
-        });
-
-        const result = await response.text();
-        alert(result);
-        this.reset();
-        showStep(0);
-    } catch (error) {
-        console.error('Error:', error);
-        alert('Submission failed!');
-    }
 });

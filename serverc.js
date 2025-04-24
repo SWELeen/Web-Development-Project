@@ -15,8 +15,6 @@ const db = mysql.createConnection({
     database: "stitchit",
     port: 8889
 });
-
-
 db.connect((err) => {
     if (err) {
         console.error("DB error:", err);
@@ -24,7 +22,6 @@ db.connect((err) => {
         console.log("Connected to MySQL");
     }
 });
-
 app.post("/contact", (req, res) => {
     const { firstName, lastName, email, phone, message } = req.body;
     const sql = "INSERT INTO contacts (first_name, last_name, email, phone, message) VALUES (?, ?, ?, ?, ?)";
@@ -40,10 +37,7 @@ app.post("/contact", (req, res) => {
         }
     });
 });
-
-
 app.use(express.static('website'));
-
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}/HTML/index.html`);
 });
