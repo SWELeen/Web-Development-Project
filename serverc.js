@@ -7,6 +7,7 @@ const PORT = 3000;
 
 app.use(cors());
 app.use(express.json());
+app.use(express.static('website'));
 
 const db = mysql.createConnection({
     host: "localhost",
@@ -37,7 +38,6 @@ app.post("/contact", (req, res) => {
         }
     });
 });
-app.use(express.static('website'));
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}/HTML/index.html`);
 });
