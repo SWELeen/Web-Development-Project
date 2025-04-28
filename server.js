@@ -3,6 +3,7 @@ const mysql = require('mysql2');
 const cors = require('cors');
 const multer = require('multer');
 const path = require('path');
+
 const app = express();
 const PORT = 3000;
 
@@ -10,10 +11,10 @@ const PORT = 3000;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use("/", express.static("./website"));     // for frontend
-app.use("/uploads", express.static("uploads")); // for uploaded files
+app.use("/", express.static("./website")); // Frontend files
+app.use("/uploads", express.static("uploads")); // Uploaded files
 
-// Multer setup for file upload
+// Multer setup for file uploads
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, 'uploads/');
@@ -34,11 +35,14 @@ const db = mysql.createConnection({
 });
 
 db.connect((err) => {
-    if (err) throw err;
-    console.log('Connected to stitchit database');
+    if (err) {
+        console.error("Database connection error:", err);
+    } else {
+        console.log("✅ Connected to stitchit database");
+    }
 });
 
-// Route to handle form submission
+// Route to handle form submission (Order)
 app.post('/submit', upload.single('file'), (req, res) => {
     const {
         name, email, phone, dob,
@@ -49,12 +53,12 @@ app.post('/submit', upload.single('file'), (req, res) => {
     const image = req.file ? req.file.filename : null;
 
     const query = `
-    INSERT INTO orders (
-        name, email, phone, dob,
-        height, weight, chest, waist, hips, arm, leg, shoulder,
-        clothing_type, fabric, color, design, description, file_path
-    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
-`;
+        INSERT INTO orders (
+            name, email, phone, dob,
+            height, weight, chest, waist, hips, arm, leg, shoulder,
+            clothing_type, fabric, color, design, description, file_path
+        ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+    `;
 
     db.query(query, [
         name, email, phone, dob,
@@ -62,8 +66,8 @@ app.post('/submit', upload.single('file'), (req, res) => {
         clothingType, fabric, color, design, description, image
     ], (err, result) => {
         if (err) {
-            console.error(err);
-            res.status(500).send('Database error');
+            console.error("MySQL error in /submit:", err);
+            res.status(500).send('Database error while submitting order');
         } else {
             res.status(200).send('Order submitted successfully!');
         }
@@ -88,6 +92,25 @@ app.get('/latest-order', (req, res) => {
     });
 });
 
+// Route to handle contact form
+app.post("/contact", (req, res) => {
+    const { firstName, lastName, email, phone, message } = req.body;
+    const sql = `
+        INSERT INTO contacts (first_name, last_name, email, phone, message)
+        VALUES (?, ?, ?, ?, ?)
+    `;
+
+    db.query(sql, [firstName, lastName, email, phone, message], (err, result) => {
+        if (err) {
+            console.error("MySQL error in /contact:", err);
+            res.status(500).json({ error: err.message });
+        } else {
+            res.status(200).json({ message: "Contact message saved successfully" });
+        }
+    });
+});
+
+// Start server
 app.listen(PORT, () => {
     console.log(`🚀 Server is running on http://localhost:${PORT}/HTML/index.html`);
 });
