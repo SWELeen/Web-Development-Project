@@ -24,14 +24,14 @@ document.addEventListener("DOMContentLoaded", function () {
                 },
                 body: JSON.stringify(data)
             })
-            .then(res => res.json())
-            .then(response => {
-                alert(response.message);
-            })
-            .catch(error => {
-                console.error("Error:", error);
-                alert("Something went wrong!");
-            });
+                .then(res => res.json())
+                .then(response => {
+                    alert(response.message);
+                })
+                .catch(error => {
+                    console.error("Error:", error);
+                    alert("Something went wrong!");
+                });
         });
     }
 
