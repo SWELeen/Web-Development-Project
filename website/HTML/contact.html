@@ -46,8 +46,8 @@
     <div class="contact-form">
         <form class="info" id="contactForm">
             <div class="Name">
-                <input type="text" id="firstName" name="firstName" placeholder="First Name" pattern="[a-zA-Z]" minlength="3" required>
-                <input type="text" id="lastName" name="lastName" placeholder="Last Name" pattern="[a-zA-Z]" minlength="3" required>
+                <input type="text" id="firstName" name="firstName" placeholder="First Name" pattern="[a-zA-Z\s]{3,}" required>
+                <input type="text" id="lastName" name="lastName" placeholder="Last Name" pattern="[a-zA-Z\s]{3,}" required>
             </div>
             <div class="email">
                 <input type="email" id="email" name="email" placeholder="Email" pattern="[a-zA-Z0-9_-]+@[a-zA-Z0-9]+\.[a-zA-Z]{2,4}\.*[a-z-A-Z]*" required>
