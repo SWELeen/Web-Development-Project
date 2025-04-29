@@ -84,41 +84,6 @@
         <button class="checkout-btn" id="checkoutBtn" style="display: none;">Checkout</button>
     </div>
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            fetch('/latest-order')
-                .then(res => res.json())
-                .then(order => {
-                    console.log("🚀 Latest Order:", order);
-                    if (order) {
-                        document.getElementById("no-orders").style.display = "none";
-                        document.getElementById("ordersTable").style.display = "table";
-                        document.getElementById("checkoutBtn").style.display = "block"
-
-                        const cells = document.querySelectorAll("#ordersTable td");
-                        cells[0].textContent = order.name;
-                        cells[1].textContent = order.email;
-                        cells[2].textContent = order.phone;
-                        cells[3].textContent = order.clothing_type;
-                        cells[4].textContent = order.fabric;
-                        cells[5].textContent = order.color;
-                        cells[6].textContent = order.design;
-                        cells[7].textContent = order.description;
-
-                        document.querySelector(".order").style.display = "block";
-                    } else {
-                        // still no orders
-                        document.getElementById("ordersTable").style.display = "none";
-                        document.getElementById("no-orders").style.display = "block";
-                        document.getElementById("checkoutBtn").style.display = "none";
-                    }
-                })
-                .catch(err => {
-                    console.error("Error loading order:", err);
-                });
-        });
-    </script>
-
 </body>
 
 </html>
